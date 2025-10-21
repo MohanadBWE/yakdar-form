@@ -113,8 +113,8 @@ st.markdown(f"""
 
 # --- Header with Logo and Title ---
 st.image("logo.png", width=120) # Made the logo slightly larger
-st.title("Data Collection Hub")
-st.write("Your central portal for data collection. Select a form from the categories below or use the search to begin.")
+st.title("رێکخراوا یەک دار بەشێ داتایان")
+st.write("پورتالا تومارکرنا فورمان بو پرۆژێ شکاندنا کونکریتی")
 
 
 # --- Form Links ---
@@ -166,6 +166,7 @@ st.info(
     """, 
     icon="ℹ️"
 )
+
 
 
 
