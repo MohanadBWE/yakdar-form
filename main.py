@@ -1,4 +1,15 @@
 import streamlit as st
+import base64
+from pathlib import Path
+
+# --- Function to encode image to base64 ---
+def get_image_as_base64(path):
+    """Reads an image file and returns its base64 encoded string."""
+    try:
+        with open(path, "rb") as image_file:
+            return base64.b64encode(image_file.read()).decode()
+    except FileNotFoundError:
+        return None
 
 # --- Custom Theme Configuration ---
 # This dictionary defines your custom theme colors based on your logo.
@@ -150,16 +161,21 @@ st.markdown(f"""
 st.markdown("<div class='main-container'>", unsafe_allow_html=True)
 
 # --- Header with Logo and Title ---
-# Using custom HTML for a more flexible and responsive header layout
-st.markdown("""
-    <div class="app-header">
-        <img src="logo.png" alt="Yakdar Logo">
-        <div class="title-text">
-            <h1>رێکخراوا یەک دار بەشێ داتایان</h1>
-            <p>پورتالا تومارکرنا فورمان بو پرۆژێ شکاندنا کونکریتی</p>
+logo_base64 = get_image_as_base64("logo.png")
+if logo_base64:
+    st.markdown(f"""
+        <div class="app-header">
+            <img src="data:image/png;base64,{logo_base64}" alt="Yakdar Logo">
+            <div class="title-text">
+                <h1>رێکخراوا یەک دار بەشێ داتایان</h1>
+                <p>پورتالا تومارکرنا فورمان بو پرۆژێ شکاندنا کونکریتی</p>
+            </div>
         </div>
-    </div>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+else:
+    # Fallback in case the logo is not found
+    st.title("رێکخراوا یەک دار بەشێ داتایان")
+    st.write("پورتالا تومارکرنا فورمان بو پرۆژێ شکاندنا کونکریتی")
 
 
 # --- Form Links ---
