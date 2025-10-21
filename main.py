@@ -54,8 +54,8 @@ st.markdown(f"""
             margin-bottom: 2rem;
         }}
         .app-header img {{
-            width: 70px; /* Control logo size */
-            height: 70px;
+            width: 120px; /* Control logo size */
+            height: 120px;
         }}
         .app-header .title-text h1 {{
             margin: 0;
