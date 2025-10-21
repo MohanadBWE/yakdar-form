@@ -123,13 +123,11 @@ CATEGORIZED_FORMS = {
         "بکارئینانا روژانە": "https://ee.kobotoolbox.org/x/7SEYhAdM",
     
     },
-    "Mserik": {
-        "سەیزارێ": "https://ee.kobotoolbox.org/x/mZcQR8XK",
-        "گوندێ زوزان": "https://ee.kobotoolbox.org/x/P0EJE4Yl",
+    "coming soon": {
+
     },
     "Test phase": {
-        "حەوشکێ": "https://ee.kobotoolbox.org/x/fR6MQhnH",
-        "مسێریک 1 و 2": "https://ee.kobotoolbox.org/x/VkKhWS12",
+      
     }
 }
 
@@ -168,4 +166,5 @@ st.info(
     """, 
     icon="ℹ️"
 )
+
 
