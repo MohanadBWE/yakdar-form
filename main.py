@@ -11,27 +11,52 @@ CUSTOM_THEME = {
 }
 
 # --- Page Configuration ---
-# IMPORTANT: Make sure your logo file (e.g., 'icon.png') is in the same directory as this script.
+# Set to "wide" layout to allow for custom centering and responsive control.
 st.set_page_config(
     page_title="Yakdar form Hub",
     page_icon="icon.png", # Using your logo as the page icon
-    layout="centered",
+    layout="wide", # Changed to wide for better responsive control
     initial_sidebar_state="auto"
 )
 
-# --- Inject custom CSS for a professional UI ---
+# --- Inject custom CSS for a professional and responsive UI ---
 st.markdown(f"""
     <style>
-        /* General Body Styling */
+        /* General Body Styling & Font */
         body {{
             background-color: {CUSTOM_THEME['backgroundColor']};
+            font-family: sans-serif;
         }}
 
-        /* Main Title and Header */
-        h1, h2, h3, h4, h5, h6 {{
+        /* Main container to control width and centering */
+        .main-container {{
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }}
+
+        /* App Header: Logo and Title */
+        .app-header {{
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Space between logo and text */
+            margin-bottom: 2rem;
+        }}
+        .app-header img {{
+            width: 70px; /* Control logo size */
+            height: 70px;
+        }}
+        .app-header .title-text h1 {{
+            margin: 0;
+            font-size: 2.2em;
             color: {CUSTOM_THEME['textColor']};
         }}
-        
+        .app-header .title-text p {{
+            margin: 0;
+            font-size: 1.1em;
+            color: #555;
+        }}
+
         /* Card layout for categories */
         .card {{
             background-color: {CUSTOM_THEME['secondaryBackgroundColor']};
@@ -57,8 +82,8 @@ st.markdown(f"""
             justify-content: space-between;
             padding: 1rem;
             background-color: #F9F9F9;
-            color: {CUSTOM_THEME['textColor']} !important; /* Forcing text color to black */
-            text-decoration: none !important; /* Forcing removal of underline */
+            color: {CUSTOM_THEME['textColor']} !important;
+            text-decoration: none !important;
             border-radius: 8px;
             margin-bottom: 0.75rem;
             font-weight: 500;
@@ -67,12 +92,11 @@ st.markdown(f"""
         }}
         .form-link:hover {{
             background-color: {CUSTOM_THEME['primaryColor']};
-            color: white !important; /* Ensuring hover text color is white */
+            color: white !important;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transform: translateY(-2px);
             border-color: {CUSTOM_THEME['primaryColor']};
         }}
-        /* Arrow icon for the link */
         .form-link::after {{
             content: '→';
             font-size: 1.5em;
@@ -92,29 +116,50 @@ st.markdown(f"""
 
         /* --- Responsive Design for Mobile and Tablet --- */
         @media (max-width: 768px) {{
+            .main-container {{
+                padding: 1rem; /* Less padding on mobile */
+            }}
+            .app-header {{
+                flex-direction: column; /* Stack logo and title on mobile */
+                text-align: center;
+                gap: 10px;
+            }}
+            .app-header .title-text h1 {{
+                font-size: 1.8em;
+            }}
+             .app-header .title-text p {{
+                font-size: 1em;
+            }}
             .card {{
-                padding: 15px; /* Reduce padding on smaller screens */
+                padding: 15px;
                 margin-bottom: 1.5rem;
             }}
             .card-title {{
-                font-size: 1.25em; /* Make title slightly smaller */
+                font-size: 1.25em;
             }}
             .form-link {{
                 padding: 0.8rem;
-                font-size: 0.95em; /* Adjust font size for readability */
-            }}
-            h1 {{
-                font-size: 1.8em; /* Adjust main title size */
+                font-size: 0.95em;
             }}
         }}
     </style>
 """, unsafe_allow_html=True)
 
+# --- Main App Layout ---
+# Using a custom div to wrap the content for better control
+st.markdown("<div class='main-container'>", unsafe_allow_html=True)
 
 # --- Header with Logo and Title ---
-st.image("logo.png", width=120) # Made the logo slightly larger
-st.title("رێکخراوا یەک دار بەشێ داتایان")
-st.write("پورتالا تومارکرنا فورمان بو پرۆژێ شکاندنا کونکریتی")
+# Using custom HTML for a more flexible and responsive header layout
+st.markdown("""
+    <div class="app-header">
+        <img src="logo.png" alt="Yakdar Logo">
+        <div class="title-text">
+            <h1>رێکخراوا یەک دار بەشێ داتایان</h1>
+            <p>پورتالا تومارکرنا فورمان بو پرۆژێ شکاندنا کونکریتی</p>
+        </div>
+    </div>
+""", unsafe_allow_html=True)
 
 
 # --- Form Links ---
@@ -137,7 +182,12 @@ search_query = st.text_input("Type here to find a specific form...", placeholder
 
 # --- Displaying the Form Links ---
 found_match = False
-for category, forms in CATEGORIZED_FORMS.items():
+# Using a copy of keys to avoid runtime error during dictionary modification in a loop
+for category, forms in list(CATEGORIZED_FORMS.items()):
+    # Skip empty categories
+    if not forms:
+        continue
+
     filtered_forms = {
         name: url for name, url in forms.items()
         if search_query.lower() in name.lower()
@@ -158,7 +208,6 @@ if not found_match and search_query:
 
 # --- Footer ---
 st.markdown("---")
-# Corrected the st.info block to handle multiple lines of text correctly.
 st.info(
     """
     All rights reserved © Yakdar 2024.  
@@ -167,6 +216,6 @@ st.info(
     icon="ℹ️"
 )
 
-
-
+# Close the main container div
+st.markdown("</div>", unsafe_allow_html=True)
 
