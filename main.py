@@ -123,10 +123,10 @@ CATEGORIZED_FORMS = {
         "بکارئینانا روژانە": "https://ee.kobotoolbox.org/x/7SEYhAdM",
     
     },
-    "coming soon": {
+    "forms": {
 
     },
-    "Test phase": {
+    "forms": {
       
     }
 }
@@ -166,5 +166,6 @@ st.info(
     """, 
     icon="ℹ️"
 )
+
 
 
