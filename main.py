@@ -185,7 +185,7 @@ CATEGORIZED_FORMS = {
     
     },
     "Sumel - Mserik": {
-        "سەیزارێ 23.10.2025": "https://ee.kobotoolbox.org/x/8dyDAVoo",
+        "سەیزارێ 29.10.2025": "https://ee.kobotoolbox.org/x/B77p0KOh",
 
     },
     "forms": {
@@ -235,5 +235,6 @@ st.info(
 
 # Close the main container div
 st.markdown("</div>", unsafe_allow_html=True)
+
 
 
