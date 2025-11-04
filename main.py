@@ -185,7 +185,7 @@ CATEGORIZED_FORMS = {
     
     },
     "Sumel - Mserik": {
-        "5.11.25 Sumel_Galavej": "https://ee.kobotoolbox.org/x/5OwWzTFu",
+        "5.11.25 Gre Gawra": "https://ee.kobotoolbox.org/x/5OwWzTFu",
 
     },
     "forms": {
