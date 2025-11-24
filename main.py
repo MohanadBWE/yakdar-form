@@ -185,7 +185,7 @@ CATEGORIZED_FORMS = {
     
     },
     "Sumel - Mserik": {
-        "Mserik 19.11.25": "https://ee.kobotoolbox.org/x/2LZepf5b",
+        "Sumel 24.11.2025": "https://ee.kobotoolbox.org/x/VXqbosO2",
 
     },
     "forms": {
@@ -235,6 +235,7 @@ st.info(
 
 # Close the main container div
 st.markdown("</div>", unsafe_allow_html=True)
+
 
 
 
