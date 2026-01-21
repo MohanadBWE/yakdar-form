@@ -181,11 +181,11 @@ else:
 # --- Form Links ---
 CATEGORIZED_FORMS = {
     "General Surveys": {
-        "بکارئینانا روژانە": "https://ee.kobotoolbox.org/x/7SEYhAdM",
+        "بکارئینانا روژانە": "https://ee.kobotoolbox.org/x/JrobVE9E",
     
     },
     "Sumel - Mserik": {
-        "New Tanahi 11.1.26": "https://ee.kobotoolbox.org/x/G0XJYIXa",
+        "tanahi 22.1.2026": "https://ee.kobotoolbox.org/x/JrobVE9E",
 
     },
     "forms": {
@@ -235,6 +235,7 @@ st.info(
 
 # Close the main container div
 st.markdown("</div>", unsafe_allow_html=True)
+
 
 
 
